@@ -15,6 +15,19 @@
 
 ## Page de détail
 
+- service `services/TweetService` 
+  - ajouter une méthode `findById(id: number): Observable<Tweet>` faisant une requête GET sur `/tweets/:id`
+- composant `components/TweetDetailsComponent` :
+  - créer le composant
+  - ts :
+    - créer un attribut `tweet$` de type `Observable<Tweet>`
+    - injecter dans le constructeur `TweetService` et `ActivatedRoute`
+    - toujours dans le constructeur mettre dans l'attributs `tweet$` le résultat de l'appel à `activatedRoute.params.pipe(map(...), mergeMap(...))`
+  - html: faite un truc moche
+- dans `app-routing.module.ts`, associer la route `/tweets/:id` au composant `TweetDetailsComponent`
+- dans le html de `components/TweetListComponent`, ajouter un lien pour chaque tweet
+
+
 ## Suppression des tweets
 
 ## Ajout

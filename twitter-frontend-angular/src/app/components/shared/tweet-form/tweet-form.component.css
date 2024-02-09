@@ -1,0 +1,45 @@
+.tweet-form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: 1fr 35px;
+  grid-template-areas:
+    "img content"
+    "img actions";
+  border: 1px solid darkgray;
+  padding: 10px;
+
+  >.img {
+    grid-area: img;
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+  }
+
+  >.content {
+    grid-area: content;
+
+    textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: larger;
+      border: none !important;
+    }
+
+    .separator {
+      width: 80%;
+      border-top: 1px solid lightgray;
+      margin: 0 auto;
+    }
+  }
+
+  >.actions {
+    grid-area: actions;
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

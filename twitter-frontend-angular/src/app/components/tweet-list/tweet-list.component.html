@@ -1,1 +1,13 @@
 <h1>Tweets</h1>
+
+
+<ng-container *ngIf="tweets$ | async as tweets; else loading">
+  <div class="tweets">
+    <app-tweet-form (tweetSubmit)="onNewTweet($event)"></app-tweet-form>
+    <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet" (delete)="onDelete(tweet)"></app-tweet>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

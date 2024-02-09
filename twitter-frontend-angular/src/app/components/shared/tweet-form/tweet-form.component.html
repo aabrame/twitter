@@ -1,0 +1,33 @@
+<div class="tweet-form">
+  <div class="img">
+    <img src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"/>
+  </div>
+  <div class="content" [formGroup]="tweetFormGroup">
+    <textarea formControlName="content" placeholder="What is happening ?" rows="1"></textarea>
+    <div class="separator"></div>
+  </div>
+
+  <div class="actions">
+    <div>
+      <button mat-icon-button color="primary">
+        <mat-icon>photo</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>gif_box</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>page_info</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>mood</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>event</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>location_on</mat-icon>
+      </button>
+    </div>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Post</button>
+  </div>
+</div>

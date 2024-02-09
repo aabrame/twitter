@@ -1,0 +1,46 @@
+.tweet {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: auto 1fr 35px;
+  grid-template-areas: "img infos"
+    "img content"
+    "img actions";
+  border: 1px solid darkgray;
+  padding: 10px;
+
+  &:hover {
+    background-color: rgb(225, 225, 225);
+    transition: background-color 100ms;
+  }
+
+  >.img {
+    grid-area: img;
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+
+    .content {
+      height: 100%;
+      border: 1px solid grey;
+    }
+  }
+
+  >.infos {
+    grid-area: infos;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  >.content {
+    grid-area: content;
+  }
+
+  >.actions {
+    grid-area: actions;
+  }
+
+}

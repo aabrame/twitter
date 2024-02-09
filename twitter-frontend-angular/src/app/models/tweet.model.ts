@@ -7,7 +7,9 @@ export interface Tweet {
   content: string;
   date: Date;
   views: number;
+  type: 'TWEET' | 'COMMENT' | 'REPOST';
   author: User;
   comments: Comment[];
   reposts: Repost[];
+  likes: User[];
 }

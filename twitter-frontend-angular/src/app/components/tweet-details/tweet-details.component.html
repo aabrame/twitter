@@ -1,0 +1,10 @@
+
+<ng-container *ngIf="tweet$ | async as tweet; else loading">
+  <div class="container">
+    <app-tweet [tweet]="tweet" [showReplies]="true"></app-tweet>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

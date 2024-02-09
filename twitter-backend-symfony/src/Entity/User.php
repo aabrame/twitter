@@ -139,6 +139,7 @@ class User
     {
         if (!$this->liked->contains($liked)) {
             $this->liked->add($liked);
+            $liked->getLikes()->add($this);
         }
 
         return $this;
@@ -147,6 +148,7 @@ class User
     public function removeLiked(Tweet $liked): static
     {
         $this->liked->removeElement($liked);
+        $liked->getLikes()->removeElement($this);
 
         return $this;
     }

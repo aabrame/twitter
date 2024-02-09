@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping\InheritanceType;
 
 #[ORM\Entity(repositoryClass: TweetRepository::class)]
 #[InheritanceType('SINGLE_TABLE')]
-#[ApiResource()]
+#[ApiResource(order: ['date' => 'DESC'])]
 class Tweet
 {
     #[ORM\Id]
@@ -41,10 +41,14 @@ class Tweet
     #[ORM\OneToMany(targetEntity: Repost::class, mappedBy: 'original')]
     private Collection $reposts;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'liked')]
+    private Collection $likes;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->reposts = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     
@@ -195,6 +199,33 @@ class Tweet
             if ($repost->getOriginal() === $this) {
                 $repost->setOriginal(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of likes
+     */ 
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    public function addLike(User $user): static
+    {
+        if (!$this->likes->contains($user)) {
+            $this->likes->add($user);
+            $user->getLiked()->add($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(User $user): static
+    {
+        if ($this->likes->removeElement($user)) {
+            $user->getLiked()->removeElement($this);
         }
 
         return $this;

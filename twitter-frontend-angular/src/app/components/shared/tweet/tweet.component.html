@@ -1,0 +1,34 @@
+<div class="tweet">
+  <div class="img">
+    <img src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"/>
+    <div [ngClass]="tweet?.type === 'COMMENT' ? 'comment' : ''"></div>
+  </div>
+  <div class="infos">
+    <div>{{ tweet?.author ?? "anonymous user" }} - {{ tweet?.date | date }}</div>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon fontIcon="more_horiz"></mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/tweets/' + tweet?.id">Details</button>
+        <button mat-menu-item [routerLink]="'/tweets/edit/' + tweet?.id">Edit</button>
+        <button mat-menu-item (click)="onDelete()">Delete</button>
+      </mat-menu>
+
+  </div>
+  <div class="content">{{ tweet?.content }}</div>
+  <div class="actions">
+    <button mat-button>
+      <mat-icon fontIcon="chat_bubble"></mat-icon>{{tweet?.comments?.length}}
+    </button>
+    <button mat-button>
+      <mat-icon fontIcon="repeat"></mat-icon>{{tweet?.reposts?.length}}
+    </button>
+    <button mat-button>
+      <mat-icon fontIcon="favorite"></mat-icon>{{tweet?.likes?.length}}
+    </button>
+    <button mat-button>
+      <mat-icon fontIcon="bar_chart"></mat-icon>{{tweet?.views}}
+    </button>
+  </div>
+</div>
+<ng-container *ngIf="showReplies">
+  <app-tweet *ngFor="let c of tweet?.comments" [tweet]="c"></app-tweet>
+</ng-container>

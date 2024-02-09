@@ -5,6 +5,7 @@ import { TweetListComponent } from './components/tweet-list/tweet-list.component
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { TweetDetailsComponent } from './components/tweet-details/tweet-details.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'users/add', component: UserAddComponent },
   { path: 'users/:id', component: UserDetailsComponent },
   { path: 'tweets', component: TweetListComponent },
+  { path: 'tweets/:id', component: TweetDetailsComponent },
   { path: '', redirectTo: '/tweets', pathMatch: 'full' },
 ];
 
