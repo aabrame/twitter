@@ -14,6 +14,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserFormComponent } from './components/shared/user-form/user-form.component';
 import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import {MatButtonModule} from '@angular/material/button';
+
+const materialImports = [
+  MatButtonModule
+];
 
 @NgModule({
   declarations: [
@@ -32,9 +39,12 @@ import { UserListItemComponent } from './components/user-list-item/user-list-ite
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ...materialImports
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
