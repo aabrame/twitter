@@ -1,0 +1,9 @@
+<div class="user">
+  <div>{{user?.id}}</div>
+  <div>{{user?.name}}</div>
+  <div>{{user?.email}}</div>
+  <div>{{user?.type}}</div>
+  <app-action-button [action]="deleteAction(user!)" (success)="onDeleteSuccess()">delete</app-action-button>
+  <button [routerLink]="'/users/edit/' + user?.id">edit</button>
+  <button [routerLink]="'/users/' + user?.id">details</button>
+</div>

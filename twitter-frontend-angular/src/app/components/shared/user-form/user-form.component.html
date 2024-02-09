@@ -1,0 +1,31 @@
+<form [formGroup]="userFormGroup" (ngSubmit)="onSubmit()">
+
+  <input type="text" formControlName="name" placeholder="name"/>
+  <span class="errors" *ngIf="showErrors(userFormGroup.get('name')!)">
+    <span *ngIf="userFormGroup.get('name')?.errors?.['required']">the name is mandatory</span>
+    <span *ngIf="userFormGroup.get('name')?.errors?.['minlength']">the name must be at last 3 characters long</span>
+    <span *ngIf="userFormGroup.get('name')?.errors?.['pirate']">you're a pirate !</span>
+  </span>
+  <br/>
+
+  <input type="email" formControlName="email" placeholder="email"/>
+  <span class="errors" *ngIf="showErrors(userFormGroup.get('email')!)">
+    <span *ngIf="userFormGroup.get('email')?.errors?.['required']">the email is mandatory</span>
+    <span *ngIf="userFormGroup.get('email')?.errors?.['email']">invalid email format</span>
+  </span>
+  <br/>
+
+  <input type="text" formControlName="password" placeholder="password"/>
+  <span class="errors" *ngIf="showErrors(userFormGroup.get('password')!)">
+    <span *ngIf="userFormGroup.get('password')?.errors?.['required']">the password is mandatory</span>
+    <span *ngIf="userFormGroup.get('password')?.errors?.['pattern']">the password must include a digit, a lower case and an upper case character and be at least 8 characters long</span>
+  </span>
+  <br/>
+
+  <select formControlName="type">
+    <option value="CLIENT">Client</option>
+    <option value="ADMIN">Admin</option>
+  </select><br/>
+  <button [disabled]="showErrors(userFormGroup)">Submit</button>
+  <button routerLink="/users">Cancel</button>
+</form>

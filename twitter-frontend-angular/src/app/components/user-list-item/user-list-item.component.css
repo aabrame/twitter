@@ -1,0 +1,8 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  > * {
+    margin-left: 5px;
+  }
+}

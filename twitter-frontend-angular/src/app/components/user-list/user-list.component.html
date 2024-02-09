@@ -1,0 +1,8 @@
+<h1>Users</h1>
+
+<a routerLink="/users/add">new user</a>
+
+<input type="text" [formControl]="search"/>
+<ul>
+  <app-user-list-item *ngFor="let u of users" [user]="u" (delete)="onDelete($event)"></app-user-list-item>
+</ul>

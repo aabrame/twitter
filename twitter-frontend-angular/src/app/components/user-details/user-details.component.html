@@ -1,0 +1,11 @@
+<h1>User details</h1>
+
+<ng-container [ngSwitch]="status">
+  <div *ngSwitchCase="'LOADING'">loading ...</div>
+  <div *ngSwitchCase="'ERROR'">error :(</div>
+  <ul *ngSwitchCase="'SUCCESS'">
+    <li>id: {{user?.id}}</li>
+    <li>name: {{user?.name}}</li>
+    <li>email: {{user?.email}}</li>
+  </ul>
+</ng-container>

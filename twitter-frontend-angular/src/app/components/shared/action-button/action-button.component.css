@@ -1,0 +1,23 @@
+button {
+  padding: 5px;
+}
+
+button.success {
+  background-color: green;
+}
+
+button.error {
+  background-color: red;
+}
+
+@keyframes loading {
+  from {background-color: white;}
+  to {background-color: blue;}
+}
+
+button.loading {
+  animation-name: loading;
+  animation-duration: .25s;
+  animation-iteration-count: infinite;
+  transition: background-color .25s;
+}
