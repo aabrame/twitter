@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\IncrementTweetViewsController;
+use App\Controller\TweetCommentsController;
 use App\Repository\TweetRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -32,6 +33,11 @@ use Doctrine\ORM\Mapping\InheritanceType;
             name: 'incrementViews',
             uriTemplate: '/tweets/{id}/views',
             controller: IncrementTweetViewsController::class
+        ),
+        new Get(
+            name: 'comments',
+            uriTemplate: '/tweets/{id}/comments',
+            controller: TweetCommentsController::class
         )
     ]
 )]

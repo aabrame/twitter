@@ -3,6 +3,7 @@
   <div class="container">
     <app-tweet [tweet]="tweet"></app-tweet>
   </div>
+  <app-tweet *ngFor="let c of comments$ | async" [tweet]="c">comment</app-tweet>
 </ng-container>
 
 <ng-template #loading>

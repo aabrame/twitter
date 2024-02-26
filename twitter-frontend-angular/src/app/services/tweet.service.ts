@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { User } from '../models/user.model';
 import { Tweet } from '../models/tweet.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,9 @@ export class TweetService {
 
   incrementViews(tweet: Tweet): Observable<void> {
     return this.httpClient.get<void>(this.url + "/" + tweet.id + "/views");
+  }
+
+  getComments(tweet: Tweet): Observable<Comment[]> {
+    return this.httpClient.get<Comment[]>(this.url + "/" + tweet.id + "/comments");
   }
 }
