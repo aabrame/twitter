@@ -1,7 +1,7 @@
 
 <ng-container *ngIf="tweet$ | async as tweet; else loading">
   <div class="container">
-    <app-tweet [tweet]="tweet" [showReplies]="true"></app-tweet>
+    <app-tweet [tweet]="tweet"></app-tweet>
   </div>
 </ng-container>
 

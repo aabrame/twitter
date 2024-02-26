@@ -3,6 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use App\Controller\IncrementTweetViewsController;
 use App\Repository\TweetRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,7 +19,22 @@ use Doctrine\ORM\Mapping\InheritanceType;
 
 #[ORM\Entity(repositoryClass: TweetRepository::class)]
 #[InheritanceType('SINGLE_TABLE')]
-#[ApiResource(order: ['date' => 'DESC'])]
+#[ApiResource(
+    order: ['date' => 'DESC'],
+    operations: [
+        new GetCollection(),
+        new Get(),
+        new Delete(),
+        new Post(),
+        new Put(),
+        new Patch(),
+        new Get(
+            name: 'incrementViews',
+            uriTemplate: '/tweets/{id}/views',
+            controller: IncrementTweetViewsController::class
+        )
+    ]
+)]
 class Tweet
 {
     #[ORM\Id]

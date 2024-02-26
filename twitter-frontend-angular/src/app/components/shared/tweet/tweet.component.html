@@ -5,7 +5,7 @@
   </div>
   <div class="infos">
     <div>{{ tweet?.author ?? "anonymous user" }} - {{ tweet?.date | date }}</div>
-    <button mat-button [matMenuTriggerFor]="menu"><mat-icon fontIcon="more_horiz"></mat-icon></button>
+    <button mat-button [matMenuTriggerFor]="menu" (click)="stopPropagation($event)"><mat-icon fontIcon="more_horiz"></mat-icon></button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="'/tweets/' + tweet?.id">Details</button>
         <button mat-menu-item [routerLink]="'/tweets/edit/' + tweet?.id">Edit</button>
@@ -29,6 +29,3 @@
     </button>
   </div>
 </div>
-<ng-container *ngIf="showReplies">
-  <app-tweet *ngFor="let c of tweet?.comments" [tweet]="c"></app-tweet>
-</ng-container>

@@ -9,10 +9,13 @@ import { Tweet } from '../../../models/tweet.model';
 export class TweetComponent {
 
   @Input() tweet?: Tweet;
-  @Input() showReplies = false;
   @Output() delete = new EventEmitter<void>();
 
   onDelete() {
     this.delete.emit();
+  }
+
+  stopPropagation(event: Event) {
+    event.stopPropagation();
   }
 }

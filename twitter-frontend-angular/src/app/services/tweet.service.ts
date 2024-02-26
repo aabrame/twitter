@@ -31,4 +31,8 @@ export class TweetService {
   deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.url + "/" + id).pipe(delay(1000));
   }
+
+  incrementViews(tweet: Tweet): Observable<void> {
+    return this.httpClient.get<void>(this.url + "/" + tweet.id + "/views");
+  }
 }

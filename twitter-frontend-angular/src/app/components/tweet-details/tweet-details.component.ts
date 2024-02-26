@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Tweet } from '../../models/tweet.model';
-import { Observable, map, mergeMap } from 'rxjs';
+import { Observable, map, mergeMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { TweetService } from '../../services/tweet.service';
 
@@ -11,7 +11,7 @@ import { TweetService } from '../../services/tweet.service';
 })
 export class TweetDetailsComponent {
 
-  tweet$?: Observable<Tweet>;
+  tweet$: Observable<Tweet>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -19,7 +19,9 @@ export class TweetDetailsComponent {
   ) {
     this.tweet$ = this.activatedRoute.params.pipe(
       map(params => Number(params['id'])),
-      mergeMap(id => this.tweetService.findById(id)));
+      mergeMap(id => this.tweetService.findById(id)),
+      map(tweet => { tweet.views++; return tweet; }),
+      tap(tweet => tweetService.incrementViews(tweet).subscribe()));
   }
 
 }
